@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&display=swap');
+
+:root {
+    --bg-blue: #f2f8fc;
+    --card-blue: #ffffff;
+    --text-dark: #1a2b3c;
+    --accent: #60a5fa;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    background-color: var(--bg-blue);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+/* SLEEK MODERN NAV */
+nav {
+    position: sticky;
+    top: 0;
+    background: rgba(242, 248, 252, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover { 
+    color: var(--accent); 
+}
+
+/* HOME HERO SLIDESHOW - RESOLUTION FIX */
+.hero {
+    width: 92%; /* Gives nice breathing room on the sides */
+    max-width: 1400px; /* Stops infinite stretching on giant monitors */
+    height: 65vh; /* Keeps a reasonable height */
+    margin: 20px auto 60px; /* Centers the slideshow perfectly */
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px; /* Matches the modern rounded corners */
+    background: transparent;
+}
+
+.slide {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: contain; /* The magic fix: shows the full high-res photo */
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active { 
+    opacity: 1; 
+}
+
+/* LAYOUT CONTAINERS */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px 80px;
+}
+
+.section-title {
+    text-align: center;
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+}
+
+/* HOME 3-COLUMN ROW */
+.trio-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.trio-card {
+    background: var(--card-blue);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Animation bug fix */
+}
+
+.trio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    z-index: 10; /* Keeps image on top when hovering */
+}
+
+.trio-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.trio-card p {
+    font-size: 0.95rem;
+    color: #475569;
+    text-align: center;
+}
+
+/* MODERN MASONRY GALLERY */
+.masonry-gallery {
+    column-count: 3;
+    column-gap: 30px;
+}
+
+@media (max-width: 900px) { 
+    .masonry-gallery { column-count: 2; } 
+}
+@media (max-width: 600px) { 
+    .masonry-gallery { column-count: 1; } 
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 30px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    padding: 10px;
+    position: relative; /* Animation bug fix */
+    will-change: transform; /* Smooths out the hover effect */
+}
+
+.masonry-item:hover { 
+    transform: scale(1.02); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    z-index: 10; /* Prevents disappearing behind other images */
+}
+
+.masonry-item img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+/* CONTACT PAGE */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+    background: var(--card-blue);
+    padding: 50px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+}
+
+.bio-section img {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    object-fit: cover;
+}
+
+.bio-section h3 { 
+    font-size: 1.5rem; 
+    margin-bottom: 10px; 
+    font-weight: 800; 
+}
+
+.bio-section p { 
+    color: #475569; 
+}
+
+.contact-form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%; 
+    padding: 18px; 
+    border-radius: 12px;
+    border: 1px solid #e2e8f0; 
+    background: #f8fafc;
+    font-family: inherit; 
+    font-size: 1rem; 
+    transition: border 0.3s;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none; 
+    border-color: var(--accent);
+}
+
+.contact-form button {
+    background: var(--text-dark); 
+    color: white; 
+    padding: 20px;
+    border: none; 
+    border-radius: 12px; 
+    font-weight: 800;
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    cursor: pointer; 
+    transition: 0.3s;
+}
+
+.contact-form button:hover { 
+    background: var(--accent); 
+}

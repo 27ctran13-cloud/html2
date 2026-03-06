@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="photography.html">Photography</a>
+        <a href="design.html">Design</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header class="hero">
+        <img src="tuan.png" class="slide active">
+        <img src="vietnam.png" class="slide">
+    </header>
+
+    <main class="container">
+        <div class="trio-row">
+            <div class="trio-card">
+                <img src="hoichi.png" alt="Photography">
+                <p>Capturing raw, authentic moments behind the lens. Specializing in natural light and dynamic compositions.</p>
+            </div>
+            <div class="trio-card">
+                <img src="rocks.png" alt="Landscapes">
+                <p>Exploring the textures of the natural world and pushing the boundaries of visual storytelling.</p>
+            </div>
+            <div class="trio-card">
+                <img src="justin.ton.png" alt="About Me">
+                <p>High school student, competitive tennis player, and dedicated creator. Balancing life on the court with life behind the camera.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 4000);
+    </script>
+</body>
+</html>
